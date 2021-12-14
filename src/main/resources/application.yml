@@ -16,4 +16,4 @@ spring:
 logging:
   level:
     org.hivernate.SQL: debug
-#    org.hivernate.type: trace
+    org.hivernate.type: trace

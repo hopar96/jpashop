@@ -76,7 +76,7 @@ public class OrderRepository {
         }
         if (StringUtils.hasText(orderSearch.getMemberName())) {
             Predicate name =
-                    cb.like(m.<String>get("name"), "%" +
+                    cb.like(m.get("name"), "%" +
                             orderSearch.getMemberName() + "%");
             criteria.add(name);
         }

@@ -1,5 +1,6 @@
 package jpabook.jpashop.repository;
 
+import jpabook.jpashop.DTO.BookUpdateDTO;
 import jpabook.jpashop.domain.item.Item;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -16,9 +17,14 @@ public class ItemRepository {
     public void save(Item item) {
         if (item.getId() == null) {
             em.persist(item); //신규 등록
-        } else {
-            em.merge(item); //업데이트 느낌
         }
+    }
+
+    public void updateItem(Long itemId, BookUpdateDTO bookUpdateDTO) {
+        Item findItem = em.find(Item.class, itemId);
+        findItem.setName(bookUpdateDTO.getBookName());
+        findItem.setPrice(bookUpdateDTO.getBookPrice());
+        findItem.setStockQuantity(bookUpdateDTO.getBookStockQuantity());
     }
 
     public Item findOne(Long id) {
